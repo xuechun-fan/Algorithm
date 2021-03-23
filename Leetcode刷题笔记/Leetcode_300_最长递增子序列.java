@@ -1,5 +1,3 @@
-package LeetCode刷题;
-
 /**
  * Description:
  */
