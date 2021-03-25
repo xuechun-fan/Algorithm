@@ -1,4 +1,9 @@
-class Solution{
+package LeetCode刷题;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Leetcode_022_括号生成{
 	public List<String> generateParenthesis(int n){
 		List<String> res = new ArrayList<>();
 		dfs(new char[2*n], 0, res);

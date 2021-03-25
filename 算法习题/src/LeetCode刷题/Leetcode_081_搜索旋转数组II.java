@@ -1,3 +1,5 @@
+package LeetCode刷题;
+
 /**
 	81. 搜索旋转排序数组 II
 	假设按照升序排序的数组在预先未知的某个点上进行了旋转。
@@ -13,7 +15,7 @@
 	输入: nums = [2,5,6,0,0,1,2], target = 3
 	输出: false
 */
-class Solution{
+public class Leetcode_081_搜索旋转数组II{
 	public boolean search(int[] nums, int target){
 		// 思路是二分查找，该数组的特点是前后两部分分别都是有序的
 		int start = 0, end = nums.length-1;

@@ -1,10 +1,11 @@
-import java.util.Arrays;
+package 牛客网笔试题;
+
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
 
-public class 字符串四种格式转换{
+public class Shopee笔试题_字符串四种格式转换 {
     public String getString(String s){
         if(s==null || s.length()==0){
             return "";
@@ -123,7 +124,7 @@ public class 字符串四种格式转换{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine().trim();
-        String string = new 字符串四种格式转换().getString(str);
+        String string = new Shopee笔试题_字符串四种格式转换().getString(str);
         System.out.println(string);
 
     }
