@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-public class 字符串四种格式转换{
+class 字符串四种格式转换{
     public String getString(String s){
         if(s==null || s.length()==0){
             return "";
