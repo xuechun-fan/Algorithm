@@ -30,6 +30,8 @@ public class TreeTool {
         }
         return res;
     }
+
+    //  按照层序打印二叉树
     public static void levelPrint(TreeNode root){
         List<List<Integer>> res = levelOrder(root);
         for(List<Integer> list:res){
@@ -42,6 +44,9 @@ public class TreeTool {
     }
 
 
+    //  根据前序和中序序列建立二叉树
+    public static TreeNode buildTreeByPreAndIn(int[] preOrder, int[] inOrder){
+        return 面试题7_重建二叉树.rebuildTree(preOrder, inOrder);
+    }
 
-    //
 }

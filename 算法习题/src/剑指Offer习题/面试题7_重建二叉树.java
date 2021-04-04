@@ -6,33 +6,36 @@ package 剑指Offer习题;
 public class 面试题7_重建二叉树 {
 
     //  重建二叉树
-    public static <T> TreeNode<T> rebuildTree(T[] pre, T[] in, int ps, int pe, int is, int ie){
-        if(pre==null || pre.length==0 || in==null || in.length==0 || ps > pe || is > ie){
-            return null;
+    public static TreeNode rebuildTree(int[] pre, int[] in){
+        if(pre==null || pre.length==0 || in==null || in.length==0) return null;
+        TreeNode root = rebuildTree(pre, in, 0, pre.length - 1, 0, in.length - 1);
+        return root;
+    }
+    private static TreeNode rebuildTree(int[] pre, int[] in, int ps, int pe, int is, int ie){
+        if(ps>pe || is>ie) return null;
+        TreeNode root = new TreeNode(pre[ps]);
+        int idx = is;
+        //  在中序序列中找到根节点的下标
+        while(idx<=ie && in[idx]!=pre[ps]){
+            idx++;
         }
-        T rootVal = pre[ps];
-        TreeNode<T> root = new TreeNode<T>(rootVal);
-        int i;
-        for (i = is; i <= ie; i++) {
-            if(in[i]==rootVal){
-                break;
-            }
-        }
-        root.left = rebuildTree(pre, in, ps+1, ps+i-is, is, i-1);
-        root.right = rebuildTree(pre, in, ps+i-is+1, pe, i+1, ie);
+        int leftSize = idx-is;  //  左子树节点个数
+        root.left = rebuildTree(pre, in, ps+1, ps+leftSize, is, idx-1);
+        root.right = rebuildTree(pre, in, ps+leftSize+1, pe, idx+1, ie);
         return root;
     }
 
+
     public static void main(String[] args) {
-        TreeNode<Integer> root = new TreeNode<>(1,
-                new TreeNode<Integer> (2, new TreeNode<Integer> (4, null, new TreeNode<Integer> (7, null, null)), null),
-                new TreeNode<Integer> (3, new TreeNode<Integer> (5, null, null), new TreeNode<Integer> (6, new TreeNode<Integer> (8, null, null), null)));
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2, new TreeNode(4), new TreeNode(5)),
+                new TreeNode(3, null , new TreeNode(6)));
         TreeTool.levelPrint(root);
         System.out.println("*****************************");
 
-        Integer[] preArr = new Integer[]{1, 2, 4, 7, 3, 5, 6, 8};
-        Integer[] inArr = new Integer[]{4, 2, 7, 1, 5, 3, 6, 8};
-        TreeNode<Integer> rt = rebuildTree(preArr, inArr, 0, preArr.length-1, 0, inArr.length-1);
+        int[] preArr = new int[]{1, 2, 4, 5, 3, 6};
+        int[] inArr = new int[]{4, 2, 5, 1, 3, 6};
+        TreeNode rt = rebuildTree(preArr, inArr);
         TreeTool.levelPrint(rt);
     }
 }

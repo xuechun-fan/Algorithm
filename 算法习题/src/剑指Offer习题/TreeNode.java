@@ -3,23 +3,23 @@ package 剑指Offer习题;
 /**
  * Description：
  */
-public class TreeNode<T> {
-    public T val;
-    public TreeNode<T> left;
-    public TreeNode<T> right;
-    public TreeNode<T> parent;
+public class TreeNode {
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode parent;
 
-    public TreeNode(T val) {
+    public TreeNode(int val) {
         this.val = val;
     }
 
-    public TreeNode(T val, TreeNode<T> left, TreeNode<T> right) {
+    public TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
         this.right = right;
     }
 
-    public TreeNode(T val, TreeNode<T> left, TreeNode<T> right, TreeNode<T> parent) {
+    public TreeNode(int val, TreeNode left, TreeNode right, TreeNode parent) {
         this.val = val;
         this.left = left;
         this.right = right;

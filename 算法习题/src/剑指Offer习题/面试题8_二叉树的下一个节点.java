@@ -6,11 +6,11 @@ package 剑指Offer习题;
 public class 面试题8_二叉树的下一个节点 {
 
     //  二叉树的下一个节点
-    public static <T> TreeNode<T>  findNext(TreeNode<T> cur){
+    public static TreeNode findNext(TreeNode cur){
         if(cur==null){
             return null;
         }
-        TreeNode<T> next = null;
+        TreeNode next = null;
         if(cur.right!=null){    //  当前节点有右子树的情况
             next = cur.right;
             while(next.left!=null){
@@ -40,15 +40,15 @@ public class 面试题8_二叉树的下一个节点 {
     }
 
     public static void main(String[] args) {
-        TreeNode<String> a = new TreeNode<>("a");
-        TreeNode<String> b = new TreeNode<>("b");
-        TreeNode<String> c = new TreeNode<>("c");
-        TreeNode<String> d = new TreeNode<>("d");
-        TreeNode<String> e = new TreeNode<>("e");
-        TreeNode<String> f = new TreeNode<>("f");
-        TreeNode<String> g = new TreeNode<>("g");
-        TreeNode<String> h = new TreeNode<>("h");
-        TreeNode<String> i = new TreeNode<>("i");
+        TreeNode a = new TreeNode(1);
+        TreeNode b = new TreeNode(2);
+        TreeNode c = new TreeNode(3);
+        TreeNode d = new TreeNode(4);
+        TreeNode e = new TreeNode(5);
+        TreeNode f = new TreeNode(6);
+        TreeNode g = new TreeNode(7);
+        TreeNode h = new TreeNode(8);
+        TreeNode i = new TreeNode(9);
 
         a.left = b;
         a.right = c;
@@ -69,7 +69,7 @@ public class 面试题8_二叉树的下一个节点 {
         g.parent = c;
 
         TreeTool.levelPrint(a);
-        TreeNode<String> res = findNext(g);
+        TreeNode res = findNext(g);
         System.out.println("下一个：" + (res==null?"该节点已是最后一个节点":res.val));
     }
 }
