@@ -7,7 +7,6 @@ public class 面试题19_正则表达式匹配 {
         整个模式。例如，字符串 “aaa” 与模式 "a.a" 和 "ab*ac*a" 匹配，但与 "aa.a" 和 "ab*a" 均不匹配。
      */
 
-    //  剑指 Offer 版本，比较容易理解
     public boolean isMatch(String s, String p) {
         /**         动态规划法，不是特别好理解      **/
         int m = s.length(), n = p.length();
