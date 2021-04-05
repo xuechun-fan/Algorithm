@@ -1,5 +1,6 @@
 package 剑指Offer习题;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class 面试题48_最长不含重复字符的子字符串 {
         return max;
     }
     public static void main(String[] args) {
-        int res = lengthOfLongestSubstring("abcdaabderfs");
+        int res = lengthOfLongestSubstring("abba");
         System.out.println(res);
     }
 }
