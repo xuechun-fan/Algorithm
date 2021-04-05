@@ -3,7 +3,7 @@ package 剑指Offer习题;
 /**
  * Description：
  */
-public class 面试题_45_把数组排成最小的数 {
+public class 面试题45_把数组排成最小的数 {
     public static String minNumber(int[] nums) {
         String[] strs = new String[nums.length];
         for(int i=0; i<nums.length; i++){

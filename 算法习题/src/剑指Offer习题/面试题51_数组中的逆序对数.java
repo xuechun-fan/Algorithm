@@ -14,33 +14,29 @@ public class 面试题51_数组中的逆序对数 {
      * 输出: 5
      *
      */
-    int[] nums, tmp;
-    public int reversePairs(int[] nums){
-        if(nums==null || nums.length==0) return 0;
-        this.nums = nums;
-        tmp = new int[nums.length];
+    private int[] tmp;
+    public int reversePairs(int[] nums) {
+        if(nums==null || nums.length<2) return 0;
+        //  逆序对的话，考虑到归并排序
+        this.tmp = new int[nums.length];
         return mergeSort(nums, 0, nums.length-1);
     }
+
     private int mergeSort(int[] nums, int l, int r){
-        //  截止条件
         if(l>=r) return 0;
+        //  递归分组
         int m = (l+r)>>1;
-        //  递归划分数组
-        int res = mergeSort(nums, l, m-1) + mergeSort(nums, m+1, r);
-        //  将原数组数据复制到辅助数组tmp[]中
-        for(int k=l; k<=r; k++){
-            tmp[k] = nums[k];
-        }
-        //  合并
+        int res = mergeSort(nums, l, m) + mergeSort(nums, m+1, r);
+        //  合并，注意 m 是左半数组最后一个元素的下标
+        //  复制数据到临时数组中
+        for(int i=l; i<=r; i++) tmp[i] = nums[i];
         int i = l, j = m+1;
         for(int k=l; k<=r; k++){
-            if(i==m+1){
+            if(i==m+1) nums[k] = tmp[j++];
+            else if(j==r+1 || tmp[i]<=tmp[j]) nums[k] = tmp[i++];
+            else{
                 nums[k] = tmp[j++];
-            }else if(j==r+1 || tmp[i]<=tmp[j]){
-                nums[k] = tmp[i++];
-            }else{
-                nums[k] = tmp[j++];
-                res += m-i+1;   // 统计逆序对
+                res += m-i+1;
             }
         }
         return res;

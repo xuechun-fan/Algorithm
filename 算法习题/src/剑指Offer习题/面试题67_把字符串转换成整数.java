@@ -18,7 +18,7 @@ public class 面试题67_把字符串转换成整数 {
             res = res*10 + (s.charAt(i)-'0');
         }
         return sign * res;
-    }
+    }                                                                                                                                                 
 
     public static void main(String[] args) {
         int ans = strToInt("9223372036854775808");
