@@ -2,42 +2,45 @@ package 剑指Offer习题;
 
 import java.util.*;
 
-public class 面试题38_字符串的全排列 {
-    static List<String> res = new LinkedList<>();
-    static char[] c;
 
-    public static String[] permutation(String s) {
-        c = s.toCharArray();
+public class 面试题38_字符串的全排列 {
+    private List<String> res = new ArrayList<>();
+    private  char[] arr;
+    public String[] permutation(String s){
+        if(s.length()==1) return new String[]{s};
+        this.arr = s.toCharArray();
         dfs(0);
         return res.toArray(new String[res.size()]);
     }
-
-    private static void dfs(int x){
-        if(x==c.length-1){
-            res.add(String.valueOf(c));
+    private void dfs(int idx){
+        if(idx==arr.length-1){
+            res.add(new String(arr));
             return;
         }
-        Set<Character> set = new HashSet<>();
-        for(int i=x; i<c.length; i++){
-            if(set.contains(c[i])) continue;
-            set.add(c[i]);
-            if(i!=x) swap(i, x);
-            dfs(x+1);
-            if(i!=x) swap(x, i);
+        Set<Character> dic = new HashSet<>();
+        for(int i=idx; i<arr.length; i++){
+            if(dic.contains(arr[i])){   //  剪枝
+                continue;
+            }
+            dic.add(arr[i]);
+            swap(i, idx);
+            dfs(idx+1);
+            swap(i, idx);
         }
     }
 
-    private static void swap(int a, int b){
-        char ch = c[a];
-        c[a] = c[b];
-        c[b] = ch;
+    private void swap(int a, int b){
+        char t = arr[a];
+        arr[a] = arr[b];
+        arr[b] = t;
     }
 
+
     public static void main(String[] args) {
-        String[] res = permutation("abc");
+        String[] res = new 面试题38_字符串的全排列().permutation("aba");
         for (String s:
              res) {
-            System.out.println(s);
+            System.out.print(s + "\t");
         }
     }
 }

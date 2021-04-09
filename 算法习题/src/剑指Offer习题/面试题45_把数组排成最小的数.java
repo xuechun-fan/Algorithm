@@ -4,21 +4,26 @@ package 剑指Offer习题;
  * Description：
  */
 public class 面试题45_把数组排成最小的数 {
+    static private String[] arr = null;
+
     public static String minNumber(int[] nums) {
-        String[] strs = new String[nums.length];
-        for(int i=0; i<nums.length; i++){
-            strs[i] = String.valueOf(nums[i]);
+        if(nums==null || nums.length<1){
+            return "";
         }
-        quickSort(strs, 0, strs.length-1);
+        //  根据自定义判断大小规则，使用快排思想对字符串数组进行排序即可
+        //  首先将数组转换成字符串类型
+        arr = new String[nums.length];
+        for(int i=0; i<nums.length; i++) arr[i] = String.valueOf(nums[i]);
+        quickSort(0, arr.length-1);
         StringBuilder res = new StringBuilder();
-        for(String str:strs){
+        for(String str : arr){
             res.append(str);
         }
         return res.toString();
     }
-    private static void quickSort(String[] arr, int l, int r){
+    private static void quickSort(int l, int r){
         if(l>=r) return;
-        int i=l, j=r;
+        int i = l, j = r;
         String base = arr[l];
         while(i<j){
             while(i<j && (arr[j]+base).compareTo(base+arr[j])>=0) j--;
@@ -31,8 +36,8 @@ public class 面试题45_把数组排成最小的数 {
         }
         arr[l] = arr[j];
         arr[j] = base;
-        quickSort(arr, l, j);
-        quickSort(arr, j+1, r);
+        quickSort(l, j);
+        quickSort(j+1, r);
     }
 
     public static void main(String[] args) {
