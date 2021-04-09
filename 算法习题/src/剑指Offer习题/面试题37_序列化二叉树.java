@@ -4,70 +4,55 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class 面试题37_序列化二叉树 {
+    /**
+     * 这道题核心思想在于二叉树层序遍历的使用，两种方式有一点细节不太一样，整体思路都是BFS
+     */
     // Encodes a tree to a single string.
     public static String serialize(TreeNode root) {
         if(root==null) return "[]";
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        while(!queue.isEmpty()){
-            TreeNode temp = queue.poll();
-            if(temp!=null){
-                sb.append(temp.val+",");
-                queue.add(temp.left);
-                queue.add(temp.right);
-            }else{
-                sb.append("null,");
+        StringBuilder res = new StringBuilder();
+        res.append("[");
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        while(!q.isEmpty()){
+            TreeNode tmp = q.poll();
+            res.append(tmp==null ? "null" : tmp.val);
+            res.append(",");
+            if(tmp!=null){
+                q.offer(tmp.left);
+                q.offer(tmp.right);
             }
         }
-        sb.append("]");
-        return sb.toString();
+        res.deleteCharAt(res.length()-1);
+        res.append("]");
+        return res.toString();
     }
 
     // Decodes your encoded data to tree.
     public static TreeNode deserialize(String data) {
-        if(data==null || "[]".equals(data)) return null;
-        String[] dat = data.substring(1, data.length()-1).split(",");
-        TreeNode root = new TreeNode(Integer.parseInt(dat[0]));
+        if(data==null || "[]".equals(data) || "[null]".equals(data)) return null;
+        data = data.substring(1, data.length()-1);
+        String[] nums = data.split(",");
+        TreeNode root = new TreeNode(Integer.parseInt(nums[0]));
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         int i = 1;
-        while(i<dat.length){
-            TreeNode node = q.poll();
-            if(!"null".equals(dat[i])){
-                node.left = new TreeNode(Integer.parseInt(dat[i]));
-                q.offer(node.left);
+        while(i<nums.length){
+            int size = q.size();
+            while(size>0){
+                TreeNode tmp = q.poll();
+                if(tmp!=null){
+                    tmp.left = "null".equals(nums[i]) ? null : new TreeNode(Integer.parseInt(nums[i]));
+                    q.add(tmp.left);
+                    i++;
+                    tmp.right = "null".equals(nums[i]) ? null : new TreeNode(Integer.parseInt(nums[i]));
+                    q.add(tmp.right);
+                    i++;
+                }
+                size--;
             }
-            i++;
-            if(!"null".equals(dat[i])){
-                node.right = new TreeNode(Integer.parseInt(dat[i]));
-                q.offer(node.right);
-            }
-            i++;
         }
         return root;
-
-//        if("[]".equals(data)) return null;
-//        String[] vals = data.substring(1, data.length()-1).split(",");
-//        TreeNode root = new TreeNode(Integer.parseInt(vals[0]));
-//        Queue<TreeNode> queue = new LinkedList<>();
-//        queue.add(root);
-//        int x = 1;
-//        while(x<vals.length){
-//            TreeNode t = queue.poll();
-//            if(!"null".equals(vals[x])){
-//                t.left = new TreeNode(Integer.parseInt(vals[x]));
-//                queue.add(t.left);
-//            }
-//            x++;
-//            if(!"null".equals(vals[x])){
-//                t.right = new TreeNode(Integer.parseInt(vals[x]));
-//                queue.add(t.right);
-//            }
-//            x++;
-//        }
-//        return root;
     }
 
     public static void main(String[] args) {
