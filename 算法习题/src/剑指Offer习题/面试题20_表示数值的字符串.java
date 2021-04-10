@@ -33,8 +33,8 @@ public class 面试题20_表示数值的字符串 {
                 if(!(i==0 || str[i-1]=='e'|| str[i-1]=='E')) return false;
             }else{
                 return false;
-    }
-}
+            }
+        }
         return num;
     }
 

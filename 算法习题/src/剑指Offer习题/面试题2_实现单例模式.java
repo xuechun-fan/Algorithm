@@ -43,7 +43,7 @@ class Singleton2{
         不是null，便会直接取走instance，它取走的instance其实还没有初始化参数，所以会出现问题。加
         volatile关键字可以保证JVM内部按顺序执行，避免此问题。
     * */
-    private volatile static Singleton2 singleton2 = null;
+    private volatile static Singleton2 singleton2;
     private Singleton2() {
     }
     public static Singleton2 getInstance(){

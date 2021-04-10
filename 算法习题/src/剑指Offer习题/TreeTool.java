@@ -49,4 +49,31 @@ public class TreeTool {
         return 面试题7_重建二叉树.rebuildTree(preOrder, inOrder);
     }
 
+    //  根据字符串创建二叉树
+    public static TreeNode buildTreeByString(String data) {
+        if("[]".equals(data) || "[null]".equals(data)) return null;
+        data = data.substring(1, data.length()-1);
+        String[] nums = data.split(",");
+        TreeNode root = new TreeNode(Integer.parseInt(nums[0]));
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        int i = 1;
+        while(i<nums.length){
+            int size = q.size();
+            while(i< nums.length && size>0){
+                TreeNode tmp = q.poll();
+                if(tmp!=null){
+                    tmp.left = "null".equals(nums[i]) ? null : new TreeNode(Integer.parseInt(nums[i]));
+                    q.add(tmp.left);
+                    i++;
+                    tmp.right = "null".equals(nums[i]) ? null : new TreeNode(Integer.parseInt(nums[i]));
+                    q.add(tmp.right);
+                    i++;
+                }
+                size--;
+            }
+        }
+        return root;
+    }
+
 }
