@@ -9,7 +9,7 @@ import java.util.Stack;
  *          1、public void appendTail(T element)
  *          2、public <T> T deleteHead()
  */
-public class 面试题9_用两个栈实现队列 {
+public class 面试题09_用两个栈实现队列 {
 
     public static void testCQueue(){
         CQueue<Integer> queue = new CQueue<>();

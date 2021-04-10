@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * Description:
  */
-public class 面试题4_二维数组中的查找 {
+public class 面试题04_二维数组中的查找 {
     /**
      * 二维数组中的查找
      * 数组数据从左向右、从上向下递增
@@ -89,12 +89,11 @@ public class 面试题4_二维数组中的查找 {
 
     public static void main(String[] args) {
         int[][] arr = new int[3][4];
-        arr[0] = new int[]{1, 3, 5};
-        arr[1] = new int[]{6, 7, 12};
-        arr[2] = new int[]{11,14,14};
+        arr[0] = new int[]{1, 9, 10};
+        arr[1] = new int[]{6, 13, 15};
+        arr[2] = new int[]{11,14,29};
         int k = 5;
         int res = kthSmallest(arr, k);
         System.out.println(res);
-        Map<String, String> map = new HashMap<>();
     }
 }

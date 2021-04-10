@@ -3,7 +3,7 @@ package 剑指Offer习题;
 /**
  * Description：根据前序和中序序列，重建二叉树
  */
-public class 面试题7_重建二叉树 {
+public class 面试题07_重建二叉树 {
 
     //  重建二叉树
     public static TreeNode rebuildTree(int[] pre, int[] in){

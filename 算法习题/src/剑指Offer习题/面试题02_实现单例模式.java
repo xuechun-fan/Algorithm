@@ -3,7 +3,7 @@ package 剑指Offer习题;
 /**
  * Description:
  */
-public class 面试题2_实现单例模式 {
+public class 面试题02_实现单例模式 {
     public static void main(String[] args) {
         Test t = Test.getInstance();
         System.out.println(t.age);

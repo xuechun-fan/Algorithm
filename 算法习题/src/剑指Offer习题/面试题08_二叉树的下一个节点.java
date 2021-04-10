@@ -3,7 +3,7 @@ package 剑指Offer习题;
 /**
  * Description：给定一棵二叉树和其中的一个节点，找出中序遍历的下一个节点，树的定义除了left和right指针，还有parent指针
  */
-public class 面试题8_二叉树的下一个节点 {
+public class 面试题08_二叉树的下一个节点 {
 
     //  找出二叉树的下一个节点
     public static TreeNode findNext(TreeNode cur){

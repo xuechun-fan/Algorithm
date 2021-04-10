@@ -3,7 +3,7 @@ package 剑指Offer习题;
 /**
  * Description:
  */
-public class 面试题3_数组中重复的数字 {
+public class 面试题03_数组中重复的数字 {
     public static void main(String[] args) {
         int[] nums = {0, 1, 3, 2, 3};
         int res = CH02_3_1.test02(nums);
