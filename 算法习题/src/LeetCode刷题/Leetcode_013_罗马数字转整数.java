@@ -3,7 +3,7 @@ package LeetCode刷题;
 /**
  * 罗马数字转整数
  */
-public class LeetCode_013_罗马数字转整数 {
+public class Leetcode_013_罗马数字转整数 {
     public static Integer romanToInt(String s){
         if(s==null || s.length()==0){
             return 0;
