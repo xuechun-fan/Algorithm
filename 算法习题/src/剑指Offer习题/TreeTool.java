@@ -46,7 +46,7 @@ public class TreeTool {
 
     //  根据前序和中序序列建立二叉树
     public static TreeNode buildTreeByPreAndIn(int[] preOrder, int[] inOrder){
-        return 面试题7_重建二叉树.rebuildTree(preOrder, inOrder);
+        return 面试题07_重建二叉树.rebuildTree(preOrder, inOrder);
     }
 
     //  根据字符串创建二叉树
